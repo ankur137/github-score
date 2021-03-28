@@ -29,6 +29,7 @@ const AppLayout = ({ children }) => {
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <App />
+        ``
         <div>{children}</div>
       </div>
     </ThemeProvider>
@@ -41,9 +42,10 @@ class App extends Component {
     searchCompleted: false,
   };
   onLoad = () => {
-    const showLoader = true;
+    var showLoader = false;
     this.setState({ showLoader });
-    console.log("Loader activated");
+    showLoader = true;
+    this.setState({ showLoader });
   };
   onSearchComplete = () => {
     const searchCompleted = true;

@@ -13,6 +13,7 @@ function LinearProgressWithLabel(props) {
         prevProgress >= 100 ? 100 : prevProgress + 10
       );
     }, 800);
+    console.log("this progress", progress);
     return () => {
       clearInterval(timer);
     };
@@ -50,13 +51,19 @@ const useStyles = makeStyles({
 });
 
 class Loader extends Component {
+  state = {
+    value: "",
+  };
   constructor(props) {
     super(props);
-    this.state = { value: "" };
-
+    console.log("This state in loader constructor", this.state);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  resetLoader = () => {
+    const value = "";
+    this.setState({ value });
+  };
 
   handleChange(event) {
     this.setState({ value: event.target.value });
@@ -73,6 +80,7 @@ class Loader extends Component {
   }
 
   render() {
+    console.log("Rendering Loader");
     const { classes } = this.props;
 
     return (
